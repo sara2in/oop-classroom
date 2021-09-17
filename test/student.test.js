@@ -53,7 +53,7 @@ xdescribe('Student', function () {
   })
 
   describe('.doHomework()', function () {
-    it('accepts an object that includes a `skillLevel` key and marks it as complete (i.e. adds a key of `completed` with a value of `true` to the homework) if the student\'s skill level is above the inputted homework\'s `skillLevel`', function () {
+    it('accepts an object that includes a `skillLevel` key and marks it as completed (i.e. adds a key of `completed` with a value of `true` to the homework) if the student\'s skill level is above the inputted homework\'s `skillLevel`', function () {
       const student = new Student(...this.properties)
 
       const homework = { title: 'Crushing Candy Code', skillLevel: 38 }
@@ -62,7 +62,7 @@ xdescribe('Student', function () {
       expect(homework.completed).to.be.true
     })
 
-    it('marks homework as incomplete (i.e. `complete: false`) if the skillLevel is too high', function () {
+    it('marks homework as incomplete (i.e. `completed: false`) if the skillLevel is too high', function () {
       const student = new Student(...this.properties)
 
       const homework = { title: 'OOP Classroom', skillLevel: 47 }
