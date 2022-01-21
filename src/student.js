@@ -16,6 +16,7 @@ class Student {
         }
         
         if (!homework.skillLevel || homework.skillLevel > 100) return;
+        
         this.assignments.push(homework)
 
         if ((this.skillLevel > homework.skillLevel)) {
