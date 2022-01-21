@@ -4,56 +4,20 @@ class Marker {
     this.color = color;
     this.remainingInk = remainingInk;
   }
-  write (string) {
-        if (string.length < this.remainingInk) {
-            for (let i = 0; i < string.length; i++) {
-                if (string[i] !== " ") {
-                    this.remainingInk--;
-                } 
-            }
-            return string;
-        } else if (string.length > this.remainingInk) {
-            let incompleteString = "";            
-            while (this.remainingInk > 0) {                
-                for (let letter of string) {              
-                    if (letter !== ' ') {  
-                        this.remainingInk--   
-                    }
-                    incompleteString += letter;
-                }                                       
-            }
-            return incompleteString;
+  write (str) {
+        let output = ''
+        for (let i = 0; i < str.length; i++) {
+            if ((this.remainingInk > 0) && (str.charAt(i) !== ' ')) {
+                output += str[i];
+                this.remainingInk-=1;
+            } else if ((this.remainingInk === 0) && (str.charAt(i) === ' ')) {
+                output += str[i];
+            } else if ((this.remainingInk > 0) && (str.charAt(i) === ' ')) {
+                output += str[i];
+            } 
         }
-        
-
-    
-    // if (string.length < this.remainingInk) {
-    //     for (let i = 0; i < string.length; i++) {
-    //         if (string[i] !== " ") {
-    //             this.remainingInk--;
-    //         } 
-    //     }
-    //     return string;
-    // } else if (string.length > this.remainingInk) {
-    //     let incompleteString = "";
-    //     for (let i = 0; i < string.length; i++) {
-    //         if (string[i] !== ' ') {
-    //             for (let j = 0; j < this.remainingInk; j++) {
-    //                 incompleteString += string[j];
-    //             }
-    //         }
-    //     }
-    //     return incompleteString;
-    // } else if (this.remainingInk === 0 ) {
-    //     let incompleteString = "";
-    //     for (let i = 0; i < this.remainingInk+1; i++) {
-    //         if (string[i] === ' ') {
-    //         incompleteString += string[i];
-    //         }
-    //     }
-    //     return incompleteString;
-    // }
-  }
+        return output;
+    }
 }
 
 module.exports = Marker
